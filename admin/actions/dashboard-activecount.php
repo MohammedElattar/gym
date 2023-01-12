@@ -1,18 +1,8 @@
 <?php
 
-$servername="localhost";
-$uname="root";
-$pass="";
-$db="gymnsb";
-
-$conn=mysqli_connect($servername,$uname,$pass,$db);
-
-if(!$conn){
-    die("Connection Failed");
-}
+include __DIR__.'/../../dbcon.php';
 
 $sql = "SELECT * FROM members WHERE status ='Active'";
-                $query = $conn->query($sql);
+$query = $con->query($sql);
 
-                echo "$query->num_rows";
-?>
+echo "$query->num_rows";

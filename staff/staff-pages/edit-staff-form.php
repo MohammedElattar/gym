@@ -45,10 +45,10 @@ header('location:../index.php');
 <!--sidebar-menu-->
 
 <?php
-include 'dbcon.php';
+include __DIR__.'/../../dbcon.php';
 $id=$_GET['id'];
 $qry= "select * from staffs where user_id='$id'";
-$result=mysqli_query($conn,$qry);
+$result=mysqli_query($con,$qry);
 while($row=mysqli_fetch_array($result)){
 ?> 
 

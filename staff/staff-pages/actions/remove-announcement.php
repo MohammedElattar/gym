@@ -9,7 +9,7 @@ header('location:../index.php');
 if(isset($_GET['id'])){
 $id=$_GET['id'];
 
-include 'dbcon.php';
+include  __DIR__.'/../../../dbcon.php';
 
 
 $qry="delete from announcements where id=$id";

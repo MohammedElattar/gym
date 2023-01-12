@@ -17,7 +17,7 @@ header('location:../index.php');
             $designation = $_POST["designation"];
             $id = $_POST["id"];
             
-            include 'dbcon.php';
+            include __DIR__.'/../../dbcon.php';
             //code after connection is successfull
             //update query
             $qry = "update staffs set fullname='$fullname', username='$username', gender='$gender', contact='$contact',  address='$address', designation='$designation' where user_id='$id'";

@@ -64,7 +64,7 @@ header('location:../index.php');
 
             $amountpayable = $amount * $plan;
             
-            include 'dbcon.php';
+            include __DIR__.'/../../dbcon.php';
             date_default_timezone_set('Asia/Kathmandu');
             //$current_date = date('Y-m-d h:i:s');
                 $current_date = date('Y-m-d h:i A');
@@ -74,7 +74,7 @@ header('location:../index.php');
             //code after connection is successfull
             //update query
             $qry = "UPDATE members SET amount='$amountpayable', plan='$plan', status='$status', paid_date='$curr_date', reminder = '0' WHERE user_id='$id'";
-            $result = mysqli_query($conn,$qry); //query executes
+            $result = mysqli_query($con,$qry); //query executes
 
             if(!$result){ ?>
 

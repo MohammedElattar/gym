@@ -31,7 +31,7 @@
 <!--sidebar-menu-->
 
 <?php
-    include 'dbcon.php';
+    include __DIR__.'/../../dbcon.php';
     include "session.php";
     // $id=$_GET['id'];
     $qry= "select * from members WHERE user_id='".$_SESSION['user_id']."'";

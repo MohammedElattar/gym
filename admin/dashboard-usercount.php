@@ -1,18 +1,18 @@
 <?php
 
-$servername="localhost";
-$uname="root";
-$pass="";
-$db="gymnsb";
+$servername = 'localhost';
+$uname = 'root';
+$pass = '';
+$db = 'gymnsb';
 
-$conn=mysqli_connect($servername,$uname,$pass,$db);
+$con = mysqli_connect($servername, $uname, $pass, $db);
 
-if(!$conn){
-    die("Connection Failed");
+if (!$con) {
+    exit('Connection Failed');
 }
 
-$sql = "SELECT * FROM members";
-                $query = $conn->query($sql);
+$sql = 'SELECT * FROM members';
+$query = $con->query($sql);
 
-                echo "$query->num_rows";
+echo "$query->num_rows";
 ?><!-- Visit codeastro.com for more projects -->

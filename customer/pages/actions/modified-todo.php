@@ -11,7 +11,7 @@ $task_desc = $_POST["task_desc"];
 $task_status = $_POST["task_status"];
 $id = $_POST["id"];
 
-include 'dbcon.php';
+include  __DIR__.'/../../../dbcon.php';
 //code after connection is successfull
 //update query
 $qry = "update todo set task_desc='$task_desc', task_status='$task_status' where id='$id'";

@@ -1,8 +1,8 @@
 <?php
 session_start();
-//the isset function to check username is already loged in and stored on the session
-if(!isset($_SESSION['user_id'])){
-header('location:../index.php');	
+// the isset function to check username is already loged in and stored on the session
+if (!isset($_SESSION['user_id'])) {
+    header('location:../index.php');
 }
 ?>
 <!-- Visit codeastro.com for more projects -->
@@ -32,7 +32,7 @@ header('location:../index.php');
 
 
 <!--top-Header-menu-->
-<?php include 'includes/topheader.php'?>
+<?php include 'includes/topheader.php'; ?>
 <!--close-top-Header-menu-->
 <!--start-top-serch-->
 <!-- <div id="search">
@@ -42,7 +42,8 @@ header('location:../index.php');
 <!--close-top-serch-->
 <!-- Visit codeastro.com for more projects -->
 <!--sidebar-menu-->
-<?php $page="attendance"; include 'includes/sidebar.php'?>
+<?php $page = 'attendance';
+include 'includes/sidebar.php'; ?>
 <!--sidebar-menu-->
 
 <div id="content">
@@ -72,17 +73,17 @@ header('location:../index.php');
                 </tr>
               </thead>
 
-             <?php include "dbcon.php";
-              date_default_timezone_set('Asia/Kathmandu');
-              //$current_date = date('Y-m-d h:i:s');
-                 $current_date = date('Y-m-d h:i A');
-                $exp_date_time = explode(' ', $current_date);
-                 $todays_date =  $exp_date_time['0'];
-                     $qry="SELECT * FROM members WHERE status = 'Active'";
-                    $result=mysqli_query($conn,$qry);
-                   $i=1;
-              $cnt = 1;
-            while($row=mysqli_fetch_array($result)){ ?>
+             <?php include __DIR__.'/../dbcon.php';
+date_default_timezone_set('Asia/Kathmandu');
+// $current_date = date('Y-m-d h:i:s');
+$current_date = date('Y-m-d h:i A');
+$exp_date_time = explode(' ', $current_date);
+$todays_date = $exp_date_time['0'];
+$qry = "SELECT * FROM members WHERE status = 'Active'";
+$result = mysqli_query($con, $qry);
+$i = 1;
+$cnt = 1;
+while ($row = mysqli_fetch_array($result)) { ?>
             
            <tbody> 
                
@@ -92,32 +93,31 @@ header('location:../index.php');
                 <td><div class='text-center'><?php echo $row['services']; ?></div></td>
 
                 <!-- <span>count</span><br>CHECK IN</td> -->
-                <input type="hidden" name="user_id" value="<?php echo $row['id'];?>">
+                <input type="hidden" name="user_id" value="<?php echo @$row['id']; ?>">
 
             <?php
-                $qry = "SELECT * FROM attendance WHERE curr_date = '$todays_date' AND user_id = '".$row['user_id']."'";
-                $res = $conn->query($qry);
-                $num_count  = mysqli_num_rows($res);
-                $row_exist = mysqli_fetch_array($res);
-                $curr_date = $row_exist['curr_date'];
-                if($curr_date == $todays_date){
-  
-              ?>
+    $qry = "SELECT * FROM attendance WHERE curr_date = '$todays_date' AND user_id = '".$row['user_id']."'";
+    $res = $con->query($qry);
+    $num_count = mysqli_num_rows($res);
+    $row_exist = mysqli_fetch_array($res);
+    $curr_date = @$row_exist['curr_date'];
+    if ($curr_date == $todays_date) {
+        ?>
                 <td>
-                <div class='text-center'><span class="label label-inverse"><?php echo $row_exist['curr_date'];?>  <?php echo $row_exist['curr_time'];?></span></div>
-                <div class='text-center'><a href='actions/delete-attendance.php?id=<?php echo $row['user_id'];?>'><button class='btn btn-danger'>Check Out <i class='fas fa-clock'></i></button> </a></div>
+                <div class='text-center'><span class="label label-inverse"><?php echo $row_exist['curr_date']; ?>  <?php echo $row_exist['curr_time']; ?></span></div>
+                <div class='text-center'><a href='actions/delete-attendance.php?id=<?php echo $row['user_id']; ?>'><button class='btn btn-danger'>Check Out <i class='fas fa-clock'></i></button> </a></div>
                 </td>
 
             <?php } else {
-                
                 ?>
 
-                <td><div class='text-center'><a href='actions/check-attendance.php?id=<?php echo $row['user_id'];?>'><button class='btn btn-info'>Check In <i class='fas fa-map-marker-alt'></i></button> </a></div></td>
+                <td><div class='text-center'><a href='actions/check-attendance.php?id=<?php echo $row['user_id']; ?>'><button class='btn btn-info'>Check In <i class='fas fa-map-marker-alt'></i></button> </a></div></td>
              
                 <?php }
-              ?>      
+            ?>      
               </tbody>
-           <?php $cnt++; } ?>
+           <?php ++$cnt;
+} ?>
            
 
             </table>
@@ -136,7 +136,7 @@ header('location:../index.php');
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> <?php echo date("Y");?> &copy; Developed By Naseeb Bajracharya</a> </div>
+  <div id="footer" class="span12"> <?php echo date('Y'); ?> &copy; Developed By Naseeb Bajracharya</a> </div>
 </div>
 
 <style>

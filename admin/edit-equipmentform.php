@@ -44,10 +44,10 @@ header('location:../index.php');
 <?php $page='update-equip'; include 'includes/sidebar.php'?>
 <!--sidebar-menu-->
     <?php
-        include 'dbcon.php';
+        include __DIR__.'/../dbcon.php';
         $id=$_GET['id'];
         $qry= "select * from equipment where id='$id'";
-        $result=mysqli_query($conn,$qry);
+        $result=mysqli_query($con,$qry);
         while($row=mysqli_fetch_array($result)){
     ?> 
 <!-- Visit codeastro.com for more projects -->
