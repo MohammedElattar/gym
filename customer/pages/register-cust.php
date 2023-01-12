@@ -31,7 +31,7 @@ $contact = $_POST["contact"];
 
 $password = md5($password);
 
-include 'dbcon.php';
+include __DIR__.'/../../dbcon.php';
 //code after connection is successfull
 $qry = "insert into members(fullname,username,password,dor,gender,services,amount,plan,address,contact,status) values ('$fullname','$username','$password', CURRENT_TIMESTAMP,'$gender','$services','0','$plan','$address','$contact','Pending')";
 $result = mysqli_query($con,$qry); //query executes

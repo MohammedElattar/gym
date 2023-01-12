@@ -1,5 +1,5 @@
 <?php session_start();
- include('dbcon.php'); ?>
+include __DIR__.'/dbcon.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <!-- Visit codeastro.com for more projects -->
@@ -42,34 +42,29 @@
                 </div>
             </form>
             <?php
-                if (isset($_POST['login']))
-                    {
-                        $username = mysqli_real_escape_string($con, $_POST['user']);
-                        $password = mysqli_real_escape_string($con, $_POST['pass']);
+               if (isset($_POST['login'])) {
+                   $username = mysqli_real_escape_string($con, $_POST['user']);
+                   $password = mysqli_real_escape_string($con, $_POST['pass']);
 
-                        $password = md5($password);
-                        
-                        $query 		= mysqli_query($con, "SELECT * FROM admin WHERE  password='$password' and username='$username'");
-                        $row		= mysqli_fetch_array($query);
-                        $num_row 	= mysqli_num_rows($query);
-                        
-                        if ($num_row > 0) 
-                            {			
-                                $_SESSION['user_id']=$row['user_id'];
-                                header('location:admin/index.php');
-                                
-                            }
-                        else
-                            {
-                                echo "<div class='alert alert-danger alert-dismissible' role='alert'>
+                   $password = md5($password);
+
+                   $query = mysqli_query($con, "SELECT * FROM admin WHERE  password='$password' and username='$username'");
+                   $row = mysqli_fetch_array($query);
+                   $num_row = mysqli_num_rows($query);
+
+                   if ($num_row > 0) {
+                       $_SESSION['user_id'] = $row['user_id'];
+                       header('location:admin/index.php');
+                   } else {
+                       echo "<div class='alert alert-danger alert-dismissible' role='alert'>
                                 Invalid Username and Password
                                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                                     <span aria-hidden='true'>&times;</span>
                                 </button>
                                 </div>";
-                            }
-                    }
-            ?>
+                   }
+               }
+?>
             <div class="pull-left">
             <a href="customer/index.php"><h6>Customer Login</h6></a>
             </div>

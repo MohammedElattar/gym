@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])){
-header('location:../index.php');	
+if (!isset($_SESSION['user_id'])) {
+    header('location:../index.php');
 }
 ?>
 <!-- Visit codeastro.com for more projects -->
@@ -31,7 +31,7 @@ header('location:../index.php');
 <!-- Visit codeastro.com for more projects -->
 
 <!--top-Header-menu-->
-<?php include 'includes/topheader.php'?>
+<?php include 'includes/topheader.php'; ?>
 <!--close-top-Header-menu-->
 <!--start-top-serch-->
 <!-- <div id="search">
@@ -41,7 +41,8 @@ header('location:../index.php');
 <!--close-top-serch-->
 
 <!--sidebar-menu-->
-<?php $page='add-equip'; include 'includes/sidebar.php'?>
+<?php $page = 'add-equip';
+include 'includes/sidebar.php'; ?>
 
 
 <!--sidebar-menu-->
@@ -51,71 +52,67 @@ header('location:../index.php');
   <h1>Equipment Entry Form</h1>
 </div>
 <form role="form" action="index.php" method="POST">
-            <?php 
+            <?php
 
-if(isset($_POST['ename'])){
-$name = $_POST["ename"];    
-$amount = $_POST["amount"];
-$vendor = $_POST["vendor"];
-$description = $_POST["description"];
-$date = $_POST["date"];
-$quantity = $_POST["quantity"];
-$address = $_POST["address"];
-$contact = $_POST["contact"];
+if (isset($_POST['ename'])) {
+    $name = $_POST['ename'];
+    $amount = $_POST['amount'];
+    $vendor = $_POST['vendor'];
+    $description = $_POST['description'];
+    $date = $_POST['date'];
+    $quantity = $_POST['quantity'];
+    $address = $_POST['address'];
+    $contact = $_POST['contact'];
 
-$totalamount = $amount * $quantity;
+    $totalamount = $amount * $quantity;
 
-include 'dbcon.php';
-//code after connection is successfull
-$qry = "insert into equipment(name,description,amount,vendor,address,contact,date,quantity) values ('$name','$description','$totalamount','$vendor','$address','$contact','$date','$quantity')";
-$result = mysqli_query($conn,$qry); //query executes
+    include __DIR__.'/../dbcon.php';
+    // code after connection is successfull
+    $qry = "insert into equipment(name,description,amount,vendor,address,contact,date,quantity) values ('$name','$description','$totalamount','$vendor','$address','$contact','$date','$quantity')";
+    $result = mysqli_query($con, $qry); // query executes
 
-if(!$result){
-  echo"<div class='container-fluid'>";
-      echo"<div class='row-fluid'>";
-      echo"<div class='span12'>";
-      echo"<div class='widget-box'>";
-      echo"<div class='widget-title'> <span class='icon'> <i class='fas fa-info'></i> </span>";
-          echo"<h5>Error Message</h5>";
-          echo"</div>";
-          echo"<div class='widget-content'>";
-              echo"<div class='error_ex'>";
-              echo"<h1 style='color:maroon;'>Error 404</h1>";
-              echo"<h3>Error occured while entering your details</h3>";
-              echo"<p>Please Try Again</p>";
-              echo"<a class='btn btn-warning btn-big'  href='edit-equipment.php'>Go Back</a> </div>";
-          echo"</div>";
-          echo"</div>";
-      echo"</div>";
-      echo"</div>";
-  echo"</div>";
-}else {
-
-  echo"<div class='container-fluid'>";
-      echo"<div class='row-fluid'>";
-      echo"<div class='span12'>";
-      echo"<div class='widget-box'>";
-      echo"<div class='widget-title'> <span class='icon'> <i class='fas fa-info'></i> </span>";
-          echo"<h5>Message</h5>";
-          echo"</div>";
-          echo"<div class='widget-content'>";
-              echo"<div class='error_ex'>";
-              echo"<h1>Success</h1>";
-              echo"<h3>Equipment record has been added!</h3>";
-              echo"<p>The requested details are added. Please click the button to go back.</p>";
-              echo"<a class='btn btn-inverse btn-big'  href='equipment.php'>Go Back</a> </div>";
-          echo"</div>";
-          echo"</div>";
-      echo"</div>";
-      echo"</div>";
-  echo"</div>";
-
+    if (!$result) {
+        echo "<div class='container-fluid'>";
+        echo "<div class='row-fluid'>";
+        echo "<div class='span12'>";
+        echo "<div class='widget-box'>";
+        echo "<div class='widget-title'> <span class='icon'> <i class='fas fa-info'></i> </span>";
+        echo '<h5>Error Message</h5>';
+        echo '</div>';
+        echo "<div class='widget-content'>";
+        echo "<div class='error_ex'>";
+        echo "<h1 style='color:maroon;'>Error 404</h1>";
+        echo '<h3>Error occured while entering your details</h3>';
+        echo '<p>Please Try Again</p>';
+        echo "<a class='btn btn-warning btn-big'  href='edit-equipment.php'>Go Back</a> </div>";
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    } else {
+        echo "<div class='container-fluid'>";
+        echo "<div class='row-fluid'>";
+        echo "<div class='span12'>";
+        echo "<div class='widget-box'>";
+        echo "<div class='widget-title'> <span class='icon'> <i class='fas fa-info'></i> </span>";
+        echo '<h5>Message</h5>';
+        echo '</div>';
+        echo "<div class='widget-content'>";
+        echo "<div class='error_ex'>";
+        echo '<h1>Success</h1>';
+        echo '<h3>Equipment record has been added!</h3>';
+        echo '<p>The requested details are added. Please click the button to go back.</p>';
+        echo "<a class='btn btn-inverse btn-big'  href='equipment.php'>Go Back</a> </div>";
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+} else {
+    echo "<h3>YOU ARE NOT AUTHORIZED TO REDIRECT THIS PAGE. GO BACK to <a href='index.php'> DASHBOARD </a></h3>";
 }
-
-}else{
-    echo"<h3>YOU ARE NOT AUTHORIZED TO REDIRECT THIS PAGE. GO BACK to <a href='index.php'> DASHBOARD </a></h3>";
-}
-
 
 ?>
                                     
@@ -132,7 +129,7 @@ if(!$result){
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> <?php echo date("Y");?> &copy; Developed By Naseeb Bajracharya</a> </div>
+  <div id="footer" class="span12"> <?php echo date('Y'); ?> &copy; Developed By Naseeb Bajracharya</a> </div>
 </div>
 
 <style>

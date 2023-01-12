@@ -60,10 +60,10 @@ $quantity = $_POST["quantity"];
 $address = $_POST["address"];
 $contact = $_POST["contact"];
 
-include 'dbcon.php';
+include __DIR__.'/../../dbcon.php';
 //code after connection is successfull
 $qry = "insert into equipment(name,description,amount,vendor,address,contact,date,quantity) values ('$name','$description','$amount','$vendor','$address','$contact','$date','$quantity')";
-$result = mysqli_query($conn,$qry); //query executes
+$result = mysqli_query($con,$qry); //query executes
 
 if(!$result){
   echo"<div class='container-fluid'>";

@@ -62,10 +62,10 @@ header('location:../index.php');
 	  
 	  <?php
 
-      include "dbcon.php";
+    include __DIR__.'/../dbcon.php';
       $qry="select * from equipment";
       $cnt = 1;
-        $result=mysqli_query($conn,$qry);
+        $result=mysqli_query($con,$qry);
 
         
           echo"<table class='table table-bordered table-striped'>

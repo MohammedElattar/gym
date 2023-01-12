@@ -1,5 +1,5 @@
 <?php session_start();
-include('dbcon.php'); ?>
+include __DIR__.'/../dbcon.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <!-- Visit codeastro.com for more projects -->

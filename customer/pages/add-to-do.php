@@ -60,7 +60,7 @@ header('location:../index.php');
         $task_status = $_POST["task_status"];
         $task_desc = $_POST["task_desc"];
         $user_id = $session_id;
-        include 'dbcon.php';
+        include __DIR__.'/../../dbcon.php';
         
         //code after connection is successfull
         $qry = "insert into todo(task_status,task_desc,user_id) values ('$task_status','$task_desc','$user_id')";

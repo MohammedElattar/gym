@@ -6,7 +6,7 @@ if(!isset($_SESSION['user_id'])){
 header('location:../index.php');	
 }
 
-include "dbcon.php";
+include __DIR__."/../dbcon.php";
 $qry="SELECT services, count(*) as number FROM members GROUP BY services";
 $result=mysqli_query($con,$qry);
 ?>

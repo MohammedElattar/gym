@@ -61,7 +61,7 @@
           <div class="widget-content nopadding">
 
         <?php
-            include "dbcon.php";
+            include __DIR__.'/../../dbcon.php';
             include "session.php";
             $qry="SELECT * FROM todo WHERE user_id='".$_SESSION['user_id']."'";
             $result=mysqli_query($con,$qry);
@@ -106,7 +106,7 @@
 
               <?php
 
-                include "dbcon.php";
+                include __DIR__.'/../../dbcon.php';
                 $qry="select * from announcements";
                   $result=mysqli_query($con,$qry);
                   

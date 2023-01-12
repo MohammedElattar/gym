@@ -62,7 +62,7 @@ header('location:../index.php');
             <form id="form-wizard" class="form-horizontal" action="actions/modified-todo.php" method="POST">
               <div id="form-wizard-1" class="step">
               <?php
-      include 'dbcon.php';
+      include __DIR__.'/../../dbcon.php';
       $id=$_GET['id'];
       $qry= "select * from todo where id='$id'";
       $result=mysqli_query($con,$qry);

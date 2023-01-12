@@ -66,11 +66,11 @@ header('location:../index.php');
 
             $totalamount = $amount * $plan;
             
-            include 'dbcon.php';
+            include __DIR__.'/../dbcon.php';
             //code after connection is successfull
             //update query
             $qry = "update members set fullname='$fullname', username='$username',dor='$dor', gender='$gender', services='$services', amount='$totalamount', plan='$plan', address='$address', contact='$contact' where user_id='$id'";
-            $result = mysqli_query($conn,$qry); //query executes
+            $result = mysqli_query($con,$qry); //query executes
 
             if(!$result){
                 echo"<div class='container-fluid'>";

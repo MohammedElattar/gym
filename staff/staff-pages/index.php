@@ -119,9 +119,9 @@ header('location:../index.php');
 
               <?php
 
-                include "dbcon.php";
+                include __DIR__.'/../../dbcon.php';
                 $qry="select * from announcements";
-                  $result=mysqli_query($conn,$qry);
+                  $result=mysqli_query($con,$qry);
                   
                 while($row=mysqli_fetch_array($result)){
                   echo"<div class='user-thumb'> <img width='70' height='40' alt='User' src='../img/demo/av1.jpg'> </div>";
@@ -154,9 +154,9 @@ header('location:../index.php');
               <ul>
               <?php
 
-                include "dbcon.php";
+              include __DIR__.'/../dbcon.php';
                 $qry="SELECT * FROM todo";
-                $result=mysqli_query($conn,$qry);
+                $result=mysqli_query($con,$qry);
 
                 while($row=mysqli_fetch_array($result)){ ?>
 
