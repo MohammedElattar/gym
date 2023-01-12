@@ -63,7 +63,7 @@ header('location:../index.php');
 
               <?php
 
-              include __DIR__.'/../dbcon.php';
+              include __DIR__.'/../../dbcon.php';
                 $qry="select * from announcements";
                   $result=mysqli_query($con,$qry);
                   
